@@ -1,0 +1,54 @@
+# 2.0 :: pySigma Pipelines
+
+In the Sigma conversion process, a pipeline is defined as any tool that uses the PySigma Python library to transform the standard yaml format of Sigma into a detection that will be interpreted by a SIEM.
+
+We will be using three types of PySigma structures:
+1.  A backend: this converts the detections into SPL format. We use the community version of this backend ([https://github.com/SigmaHQ/pySigma-backend-splunk](https://github.com/SigmaHQ/pySigma-backend-splunk)) and will not need to make any modifications. You can generally accept that this “just works,” but feel free to read the code to better understand how it works.
+2.  A logsource pipeline: These pipelines will read the logsource from the Sigma rule and then assign specific transformations based on fields or values to ensure that the Sigma rule can run in your environment    
+3.  A finalizer or post-processing pipeline: These pipelines perform the final steps required to present the detection in the correct format required. For example if you are converting a rule into savedsearches.conf format—you can use a finalizer to define which field will be used to name the saved search or to define default values for alert suppression or search frequency.
+
+In this lesson we will build a very basic logsource pipeline with post-processing and finalizer elements included, and write them to a single yaml file. In a more complex environment, you would move these post-processing and finalizing elements to a unique yaml file or you may even build your own backend from the PySigma library that will add additional functionality you may need.
+
+When you are building a pipeline, there are two primary tools that you will need. We have seen both of these tools already - sigconverter.io and sigma-CLI. Sigconverter.io is an incredibly useful tool for troubleshooting your yaml pipelines as you write them and can verify that your pipeline works against one rule at a time. Sigma-CLI will be primarily used in this course because it allows you to cook with fire. You can use your pipeline to convert whole folders of rules at once.
+
+Follow these steps below to first watch a pipeline in action. This is a basic pipeline that uses log source transformations, post processing, and finalizers all in one yaml file. It actually only performs one single log source transformation: it adds the stanza `index=winevent` to your SPL. After you follow these steps, I will break down exactly what is happening in the pipeline and how you may customize this for your own production use.
+
+- Create a new file and name it "first-pipeline.yml"
+
+```yaml
+# Global win eventlog index
+transformations:
+  - id: index_condition
+    type: add_condition
+    conditions:
+      index: winevent
+    rule_conditions:
+      - type: logsource
+        product: windows
+
+postprocessing:
+- type: template
+  template: |+
+    [{{ rule.id }}]
+    search = {{ query }} | eval rule="{{ rule.id }}", title="{{ rule.title }}" | collect index=notable_events
+    description = {{ rule.description }}
+
+finalizers:
+- type: concat
+  prefix: |
+    [default]
+    dispatch.earliest_time = -30d
+    dispatch.latest_time = now
+    enableSched = 1
+    cron_schedule = */15 * * * *
+    allow_skew = 5m
+```
+- Copy the PowerShell rules from the repo into your `/rules/windows/powershell` folder
+
+- run the following command:
+`sigma convert --target 'splunk' --pipeline <path-to-first-pipeline.yml> /rules/windows/powershell --skip-unsupported`
+- Open the `savedsearches.conf` file that was outputted and confirm it looks how you expect
+- Overwrite the savedsearches.conf in your Sigma app volume folder following the steps we used before in Section 1.1 including refreshing the server.
+- Navigate to `http://<splunk_server>:8000/manager/sigma/saved/searches` and change the `Owner` to `All`
+
+Now you have a bunch of searches in your saved searches! Even better - these searches will execute automatically every 15 minutes and the converter added the index to the query. 

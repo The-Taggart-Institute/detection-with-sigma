@@ -1,0 +1,37 @@
+## 0.1 :: Setup Steps
+- Install Docker
+	- For the most up-to-date steps, [follow the official Docker setup guide](https://docs.docker.com/engine/install/ubuntu/)
+	- For a full and comprehensive understanding of Docker, consider pausing here and taking the [Container Essentials course.](https://taggartinstitute.org/p/container-essentials)Note
+- Configure Docker:
+	- `sudo usermod -aG docker $USER`
+	- `newgrp docker`
+	- `docker container run hello-world`
+- Setup your Splunk app
+	- Unzip the app folder provided in `/home/<user>/sigma-course/app
+- Build the Splunk Docker image
+	- `docker container pull splunk/splunk:latest`
+- Write the following data into a file named docker-compose.yml
+```yaml
+version: "3.8"
+
+services:
+	sigma-splunk:
+		image: splunk/splunk:latest
+		container_name: sigma-splunk
+		environment:
+			- SPLUNK_START_ARGS:'--accept-license'
+			- SPLUNK_PASSWORD:'<YOUR PASSWORD>'
+		ports:
+			- 8000:8000
+			- 8089:8089
+			- 9997:9997
+		volumes:
+			- /home/seclab/app:/opt/splunk/etc/apps/sigma
+			- /home/seclab/sigma-index:/opt/splunk/var
+```
+
+- run `docker compose up -d`
+- Clone this repo
+	- `mkdir ~/Sigma-Course && cd ~/Sigma-course`
+	- `git clone https://github.com/The-Taggart-Institute/<repo>`
+- Open Visual Studio Code by running the command `code` in the `/sigma-course` folder
