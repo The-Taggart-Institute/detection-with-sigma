@@ -4,9 +4,7 @@ extends: default
 ignore:
     - .github/
     - deprecated/
-    - other/godmode_sigma_rule.yml
     - tests/
-    - unsupported/
 
 rules:
     comments:
