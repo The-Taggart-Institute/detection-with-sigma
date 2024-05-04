@@ -1,27 +1,31 @@
-title: RDP Originating From Domain Controller
-id: fda34293-718e-4b36-b018-38caab0d1209
+title: Chromium Browser Headless Execution To Mockbin Like Site
+id: 1c526788-0abe-4713-862f-b520da5e5316
 status: experimental
-description: Detects a RDP connection originating from a domain controller
-author: Josh Nickels
-date: 2024/04/30
+description: Detects the execution of a Chromium based browser process with the "headless" flag and a URL pointing to the mockbin.org service (which can be used to exfiltrate data).
 references:
-    - internal research
+    - https://www.zscaler.com/blogs/security-research/steal-it-campaign
+author: X__Junior (Nextron Systems)
+date: 2023/09/11
+tags:
+    - attack.execution
 logsource:
     product: windows
-    category: network_connection
+    category: process_creation
 detection:
-    selection_initiated:
-        Initiated: 'True'
-    selection_port:
-        DestinationPort: 3389
-    selection_hosts:
-        Computer|expand: '%domain_controller_hostnames%'
-    filter_app:
-        Image: "Microsoft.Tri.Sensor.exe" ## Microsoft Defender for Identity service makes port 3389 connections to hosts
-    condition: all of selection_* and not 1 of filter_*
+    selection_img:
+        Image|endswith:
+            - '\brave.exe'
+            - '\chrome.exe'
+            - '\msedge.exe'
+            - '\opera.exe'
+            - '\vivaldi.exe'
+    selection_headless:
+        CommandLine|contains: '--headless'
+    selection_url:
+        CommandLine|contains:
+            - '://run.mocky'
+            - '://mockbin'
+    condition: all of selection_*
 falsepositives:
-    - Legitimate administration activity
+    - Unknown
 level: high
-tags:
-    - attack.lateral_movement
-    - attack.t1021
