@@ -1,0 +1,1 @@
+Production ready rules can be placed in this folder. It is highly recommended that you follow the [folder structure of the SigmaHQ repo](https://github.com/SigmaHQ/sigma/tree/master/rules)
