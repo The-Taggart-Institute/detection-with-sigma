@@ -1,0 +1,3 @@
+# Splunk stuff
+/app/sigma-index/*
+/app/local/*
