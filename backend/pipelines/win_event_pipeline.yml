@@ -16,8 +16,8 @@ transformations:
   - id: process_creation_tf_1
     type: add_condition
     conditions:
-      eventCode: 1
-      sourcetype: 'Microsoft-Windows-Sysmon/Operational'
+      EventCode: 1
+      sourcetype: 'WinEventLog'
     rule_conditions:
       - type: logsource
         product: windows
@@ -27,8 +27,8 @@ transformations:
   - id: file_change_tf
     type: add_condition
     conditions:
-      eventCode: 2
-      sourcetype: 'Microsoft-Windows-Sysmon/Operational'
+      EventCode: 2
+      sourcetype: 'WinEventLog'
     rule_conditions:
       - type: logsource
         product: windows
@@ -38,8 +38,8 @@ transformations:
   - id: network_connection_tf
     type: add_condition
     conditions:
-      eventCode: 3
-      sourcetype: 'Microsoft-Windows-Sysmon/Operational'
+      EventCode: 3
+      sourcetype: 'WinEventLog'
     rule_conditions:
       - type: logsource
         product: windows
@@ -49,8 +49,8 @@ transformations:
   - id: sysmon_error_tf
     type: add_condition
     conditions:
-      eventCode: 4
-      sourcetype: 'Microsoft-Windows-Sysmon/Operational'
+      EventCode: 4
+      sourcetype: 'WinEventLog'
     rule_conditions:
       - type: logsource
         product: windows
@@ -60,8 +60,8 @@ transformations:
   - id: process_termination_tf
     type: add_condition
     conditions:
-      eventCode: 5
-      sourcetype: 'Microsoft-Windows-Sysmon/Operational'
+      EventCode: 5
+      sourcetype: 'WinEventLog'
     rule_conditions:
       - type: logsource
         product: windows
@@ -71,8 +71,8 @@ transformations:
   - id: driver_load_tf_1
     type: add_condition
     conditions:
-      eventCode: 6
-      sourcetype: 'Microsoft-Windows-Sysmon/Operational'
+      EventCode: 6
+      sourcetype: 'WinEventLog'
     rule_conditions:
       - type: logsource
         product: windows
@@ -82,8 +82,8 @@ transformations:
   - id: image_load_tf_1
     type: add_condition
     conditions:
-      eventCode: 7
-      sourcetype: 'Microsoft-Windows-Sysmon/Operational'
+      EventCode: 7
+      sourcetype: 'WinEventLog'
     rule_conditions:
       - type: logsource
         product: windows
@@ -93,8 +93,8 @@ transformations:
   - id: create_remote_thread_tf
     type: add_condition
     conditions:
-      eventCode: 8
-      sourcetype: 'Microsoft-Windows-Sysmon/Operational'
+      EventCode: 8
+      sourcetype: 'WinEventLog'
     rule_conditions:
       - type: logsource
         product: windows
@@ -104,8 +104,8 @@ transformations:
   - id: raw_access_thread_tf
     type: add_condition
     conditions:
-      eventCode: 9
-      sourcetype: 'Microsoft-Windows-Sysmon/Operational'
+      EventCode: 9
+      sourcetype: 'WinEventLog'
     rule_conditions:
       - type: logsource
         product: windows
@@ -115,8 +115,8 @@ transformations:
   - id: process_access_tf
     type: add_condition
     conditions:
-      eventCode: 10
-      sourcetype: 'Microsoft-Windows-Sysmon/Operational'
+      EventCode: 10
+      sourcetype: 'WinEventLog'
     rule_conditions:
       - type: logsource
         product: windows
@@ -126,8 +126,8 @@ transformations:
   - id: file_event_tf
     type: add_condition
     conditions:
-      eventCode: 11
-      sourcetype: 'Microsoft-Windows-Sysmon/Operational'
+      EventCode: 11
+      sourcetype: 'WinEventLog'
     rule_conditions:
       - type: logsource
         product: windows
@@ -137,8 +137,8 @@ transformations:
   - id: registry_add_tf
     type: add_condition
     conditions:
-      eventCode: 12
-      sourcetype: 'Microsoft-Windows-Sysmon/Operational'
+      EventCode: 12
+      sourcetype: 'WinEventLog'
     rule_conditions:
       - type: logsource
         product: windows
@@ -148,8 +148,8 @@ transformations:
   - id: registry_delete_tf
     type: add_condition
     conditions:
-      eventCode: 12
-      sourcetype: 'Microsoft-Windows-Sysmon/Operational'
+      EventCode: 12
+      sourcetype: 'WinEventLog'
     rule_conditions:
       - type: logsource
         product: windows
@@ -159,11 +159,11 @@ transformations:
   - id: registry_event_tf
     type: add_condition
     conditions:
-      eventCode:
+      EventCode:
         - 12
         - 13
         - 14
-      sourcetype: 'Microsoft-Windows-Sysmon/Operational'
+      sourcetype: 'WinEventLog'
     rule_conditions:
       - type: logsource
         product: windows
@@ -173,9 +173,9 @@ transformations:
   - id: registry_set_tf
     type: add_condition
     conditions:
-      eventCode:
+      EventCode:
         - 14
-      sourcetype: 'Microsoft-Windows-Sysmon/Operational'
+      sourcetype: 'WinEventLog'
     rule_conditions:
       - type: logsource
         product: windows
@@ -185,9 +185,9 @@ transformations:
   - id: registry_rename_tf
     type: add_condition
     conditions:
-      eventCode:
+      EventCode:
         - 14
-      sourcetype: 'Microsoft-Windows-Sysmon/Operational'
+      sourcetype: 'WinEventLog'
     rule_conditions:
       - type: logsource
         product: windows
@@ -197,8 +197,8 @@ transformations:
   - id: create_stream_hash_tf
     type: add_condition
     conditions:
-      eventCode: 15
-      sourcetype: 'Microsoft-Windows-Sysmon/Operational'
+      EventCode: 15
+      sourcetype: 'WinEventLog'
     rule_conditions:
       - type: logsource
         product: windows
@@ -208,8 +208,8 @@ transformations:
   - id: sysmon_status_tf_2
     type: add_condition
     conditions:
-      eventCode: 16
-      sourcetype: 'Microsoft-Windows-Sysmon/Operational'
+      EventCode: 16
+      sourcetype: 'WinEventLog'
     rule_conditions:
       - type: logsource
         product: windows
@@ -219,8 +219,8 @@ transformations:
   - id: pipe_created_tf
     type: add_condition
     conditions:
-      eventCode: 17
-      sourcetype: 'Microsoft-Windows-Sysmon/Operational'
+      EventCode: 17
+      sourcetype: 'WinEventLog'
     rule_conditions:
       - type: logsource
         product: windows
@@ -230,8 +230,8 @@ transformations:
   - id: pipe_connected_tf
     type: add_condition
     conditions:
-      eventCode: 18
-      sourcetype: 'Microsoft-Windows-Sysmon/Operational'
+      EventCode: 18
+      sourcetype: 'WinEventLog'
     rule_conditions:
       - type: logsource
         product: windows
@@ -241,11 +241,11 @@ transformations:
   - id: wmi_event_tf
     type: add_condition
     conditions:
-      eventCode:
+      EventCode:
         - 19
         - 20
         - 21
-      sourcetype: 'Microsoft-Windows-Sysmon/Operational'
+      sourcetype: 'WinEventLog'
     rule_conditions:
       - type: logsource
         product: windows
@@ -255,8 +255,8 @@ transformations:
   - id: dns_query_tf
     type: add_condition
     conditions:
-      eventCode: 22
-      sourcetype: 'Microsoft-Windows-Sysmon/Operational'
+      EventCode: 22
+      sourcetype: 'WinEventLog'
     rule_conditions:
       - type: logsource
         product: windows
@@ -266,8 +266,8 @@ transformations:
   - id: file_delete_tf
     type: add_condition
     conditions:
-      eventCode: 23
-      sourcetype: 'Microsoft-Windows-Sysmon/Operational'
+      EventCode: 23
+      sourcetype: 'WinEventLog'
     rule_conditions:
       - type: logsource
         product: windows
@@ -277,8 +277,8 @@ transformations:
   - id: clipboard_capture_tf
     type: add_condition
     conditions:
-      eventCode: 24
-      sourcetype: 'Microsoft-Windows-Sysmon/Operational'
+      EventCode: 24
+      sourcetype: 'WinEventLog'
     rule_conditions:
       - type: logsource
         product: windows
@@ -288,8 +288,8 @@ transformations:
   - id: process_tampering_tf
     type: add_condition
     conditions:
-      eventCode: 25
-      sourcetype: 'Microsoft-Windows-Sysmon/Operational'
+      EventCode: 25
+      sourcetype: 'WinEventLog'
     rule_conditions:
       - type: logsource
         product: windows
@@ -299,8 +299,8 @@ transformations:
   - id: file_delete_tf
     type: add_condition
     conditions:
-      eventCode: 26
-      sourcetype: 'Microsoft-Windows-Sysmon/Operational'
+      EventCode: 26
+      sourcetype: 'WinEventLog'
     rule_conditions:
       - type: logsource
         product: windows
@@ -310,8 +310,8 @@ transformations:
   - id: sysmon_error_tf
     type: add_condition
     conditions:
-      eventCode: 255
-      sourcetype: 'Channel: Microsoft-Windows-Sysmon/Operational'
+      EventCode: 255
+      sourcetype: 'Channel: WinEventLog'
     rule_conditions:
       - type: logsource
         product: windows
@@ -321,7 +321,7 @@ transformations:
   - id: ps_classic_start_tf
     type: add_condition
     conditions:
-      eventCode: 400
+      EventCode: 400
       sourcetype: 'Windows PowerShell'
     rule_conditions:
       - type: logsource
@@ -332,7 +332,7 @@ transformations:
   - id: ps_classic_script_tf
     type: add_condition
     conditions:
-      eventCode: 600
+      EventCode: 600
       sourcetype: 'Windows PowerShell'
     rule_conditions:
       - type: logsource
@@ -343,7 +343,7 @@ transformations:
   - id: ps_classic_provider_start_tf
     type: add_condition
     conditions:
-      eventCode: 800
+      EventCode: 800
       sourcetype: 'Windows PowerShell'
     rule_conditions:
       - type: logsource
@@ -354,7 +354,7 @@ transformations:
   - id: ps_module_tf
     type: add_condition
     conditions:
-      eventCode: 4103
+      EventCode: 4103
       sourcetype: 'Microsoft-Windows-PowerShell/Operational'
     rule_conditions:
       - type: logsource
@@ -365,7 +365,7 @@ transformations:
   - id: ps_script_tf
     type: add_condition
     conditions:
-      eventCode: 4104
+      EventCode: 4104
       sourcetype: 'Microsoft-Windows-PowerShell/Operational'
     rule_conditions:
       - type: logsource
@@ -376,7 +376,7 @@ postprocessing:
 - type: template
   template: |+
     [{{ rule.id }}]
-    search = {{ query }} | eval rule="{{ rule.id }}", title="{{ rule.title }}", search_description = "{{ rule.description }}" | collect index=notable_events addinfo=True source="{{ rule.id }}" 
+    search = {{ query }} | eval rule="{{ rule.id }}", title="{{ rule.title }}" | collect index=notable_events addinfo=True source="{{ rule.id }}" 
     description = {{ rule.description }}
 
 finalizers:
@@ -388,3 +388,4 @@ finalizers:
     enableSched = 1
     cron_schedule = */15 * * * *
     allow_skew = 5m
+    alert.track = 1
