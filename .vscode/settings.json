@@ -1,0 +1,16 @@
+{
+    "cSpell.words": [
+        "addinfo",
+        "concat",
+        "logsource",
+        "Savedsearches",
+        "Sched",
+        "sourcetype",
+        "sysmon",
+        "Sysmon",
+        "winevent"
+    ],
+    "cSpell.ignoreWords": [
+        "dosexec"
+    ]
+}
