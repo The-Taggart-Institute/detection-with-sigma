@@ -3,7 +3,7 @@ name: Validate Sigma rules
 on:
   push:
     branches:
-      - "*"
+      - "ChangeMe!"
     paths:
       - "deprecated/**.yml"
       - "rules/**.yml"
