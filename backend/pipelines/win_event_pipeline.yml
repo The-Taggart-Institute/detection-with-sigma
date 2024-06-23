@@ -1,0 +1,391 @@
+####
+# Splunk Savedsearches.conf Transformation Pipeline
+# Only supports basic Windows and Sysmon logs.
+####
+transformations:
+# Add winevent index to windows logs
+  - id: index_condition
+    type: add_condition
+    conditions:
+      index: winevent
+    rule_conditions:
+      - type: logsource
+        product: windows
+
+# EventID 1
+  - id: process_creation_tf_1
+    type: add_condition
+    conditions:
+      EventCode: 1
+      sourcetype: 'WinEventLog'
+    rule_conditions:
+      - type: logsource
+        product: windows
+        category: process_creation
+
+# EventID 2
+  - id: file_change_tf
+    type: add_condition
+    conditions:
+      EventCode: 2
+      sourcetype: 'WinEventLog'
+    rule_conditions:
+      - type: logsource
+        product: windows
+        category: file_change
+
+# EventID 3
+  - id: network_connection_tf
+    type: add_condition
+    conditions:
+      EventCode: 3
+      sourcetype: 'WinEventLog'
+    rule_conditions:
+      - type: logsource
+        product: windows
+        category: network_connection
+
+# EventID 4
+  - id: sysmon_error_tf
+    type: add_condition
+    conditions:
+      EventCode: 4
+      sourcetype: 'WinEventLog'
+    rule_conditions:
+      - type: logsource
+        product: windows
+        category: sysmon_error
+
+# EventID 5
+  - id: process_termination_tf
+    type: add_condition
+    conditions:
+      EventCode: 5
+      sourcetype: 'WinEventLog'
+    rule_conditions:
+      - type: logsource
+        product: windows
+        category: process_termination
+
+# EventID 6
+  - id: driver_load_tf_1
+    type: add_condition
+    conditions:
+      EventCode: 6
+      sourcetype: 'WinEventLog'
+    rule_conditions:
+      - type: logsource
+        product: windows
+        category: driver_load
+
+# EventID 7
+  - id: image_load_tf_1
+    type: add_condition
+    conditions:
+      EventCode: 7
+      sourcetype: 'WinEventLog'
+    rule_conditions:
+      - type: logsource
+        product: windows
+        category: image_load       
+
+# EventID 8
+  - id: create_remote_thread_tf
+    type: add_condition
+    conditions:
+      EventCode: 8
+      sourcetype: 'WinEventLog'
+    rule_conditions:
+      - type: logsource
+        product: windows
+        category: create_remote_thread
+
+# EventID 9
+  - id: raw_access_thread_tf
+    type: add_condition
+    conditions:
+      EventCode: 9
+      sourcetype: 'WinEventLog'
+    rule_conditions:
+      - type: logsource
+        product: windows
+        category: raw_access_thread
+
+# EventID 10
+  - id: process_access_tf
+    type: add_condition
+    conditions:
+      EventCode: 10
+      sourcetype: 'WinEventLog'
+    rule_conditions:
+      - type: logsource
+        product: windows
+        category: process_access
+
+# EventID 11
+  - id: file_event_tf
+    type: add_condition
+    conditions:
+      EventCode: 11
+      sourcetype: 'WinEventLog'
+    rule_conditions:
+      - type: logsource
+        product: windows
+        category: file_event
+
+# EventID 12
+  - id: registry_add_tf
+    type: add_condition
+    conditions:
+      EventCode: 12
+      sourcetype: 'WinEventLog'
+    rule_conditions:
+      - type: logsource
+        product: windows
+        category: registry_add
+
+# EventID 12 pt2
+  - id: registry_delete_tf
+    type: add_condition
+    conditions:
+      EventCode: 12
+      sourcetype: 'WinEventLog'
+    rule_conditions:
+      - type: logsource
+        product: windows
+        category: registry_delete
+
+# EventID 12 + 13 + 14 for registry event
+  - id: registry_event_tf
+    type: add_condition
+    conditions:
+      EventCode:
+        - 12
+        - 13
+        - 14
+      sourcetype: 'WinEventLog'
+    rule_conditions:
+      - type: logsource
+        product: windows
+        category: registry_event
+
+# EventID 13
+  - id: registry_set_tf
+    type: add_condition
+    conditions:
+      EventCode:
+        - 14
+      sourcetype: 'WinEventLog'
+    rule_conditions:
+      - type: logsource
+        product: windows
+        category: registry_set
+
+# EventID 14
+  - id: registry_rename_tf
+    type: add_condition
+    conditions:
+      EventCode:
+        - 14
+      sourcetype: 'WinEventLog'
+    rule_conditions:
+      - type: logsource
+        product: windows
+        category: registry_rename
+
+# EventID 15
+  - id: create_stream_hash_tf
+    type: add_condition
+    conditions:
+      EventCode: 15
+      sourcetype: 'WinEventLog'
+    rule_conditions:
+      - type: logsource
+        product: windows
+        category: create_stream_hash
+
+# EventID 16
+  - id: sysmon_status_tf_2
+    type: add_condition
+    conditions:
+      EventCode: 16
+      sourcetype: 'WinEventLog'
+    rule_conditions:
+      - type: logsource
+        product: windows
+        category: sysmon_status
+
+# EventID 17
+  - id: pipe_created_tf
+    type: add_condition
+    conditions:
+      EventCode: 17
+      sourcetype: 'WinEventLog'
+    rule_conditions:
+      - type: logsource
+        product: windows
+        category: pipe_created
+
+# EventID 18
+  - id: pipe_connected_tf
+    type: add_condition
+    conditions:
+      EventCode: 18
+      sourcetype: 'WinEventLog'
+    rule_conditions:
+      - type: logsource
+        product: windows
+        category: pipe_connected
+
+# EventID 19 + 20 + 21 for WMI
+  - id: wmi_event_tf
+    type: add_condition
+    conditions:
+      EventCode:
+        - 19
+        - 20
+        - 21
+      sourcetype: 'WinEventLog'
+    rule_conditions:
+      - type: logsource
+        product: windows
+        category: wmi_event
+
+# EventID 22
+  - id: dns_query_tf
+    type: add_condition
+    conditions:
+      EventCode: 22
+      sourcetype: 'WinEventLog'
+    rule_conditions:
+      - type: logsource
+        product: windows
+        category: dns_query
+
+# EventID 23
+  - id: file_delete_tf
+    type: add_condition
+    conditions:
+      EventCode: 23
+      sourcetype: 'WinEventLog'
+    rule_conditions:
+      - type: logsource
+        product: windows
+        category: file_delete
+
+# EventID 24
+  - id: clipboard_capture_tf
+    type: add_condition
+    conditions:
+      EventCode: 24
+      sourcetype: 'WinEventLog'
+    rule_conditions:
+      - type: logsource
+        product: windows
+        category: clipboard_capture
+
+# EventID 25
+  - id: process_tampering_tf
+    type: add_condition
+    conditions:
+      EventCode: 25
+      sourcetype: 'WinEventLog'
+    rule_conditions:
+      - type: logsource
+        product: windows
+        category: process_tampering
+
+# EventID 26
+  - id: file_delete_tf
+    type: add_condition
+    conditions:
+      EventCode: 26
+      sourcetype: 'WinEventLog'
+    rule_conditions:
+      - type: logsource
+        product: windows
+        category: file_delete_detected
+
+# Event ID 255
+  - id: sysmon_error_tf
+    type: add_condition
+    conditions:
+      EventCode: 255
+      sourcetype: 'Channel: WinEventLog'
+    rule_conditions:
+      - type: logsource
+        product: windows
+        category: sysmon_error
+
+# Event ID 400
+  - id: ps_classic_start_tf
+    type: add_condition
+    conditions:
+      EventCode: 400
+      sourcetype: 'Windows PowerShell'
+    rule_conditions:
+      - type: logsource
+        product: windows
+        category: ps_classic_start
+
+# Event ID 600
+  - id: ps_classic_script_tf
+    type: add_condition
+    conditions:
+      EventCode: 600
+      sourcetype: 'Windows PowerShell'
+    rule_conditions:
+      - type: logsource
+        product: windows
+        category: ps_classic_script
+
+# Event ID 800
+  - id: ps_classic_provider_start_tf
+    type: add_condition
+    conditions:
+      EventCode: 800
+      sourcetype: 'Windows PowerShell'
+    rule_conditions:
+      - type: logsource
+        product: windows
+        category: ps_classic_provider_start
+
+# Event ID 4103
+  - id: ps_module_tf
+    type: add_condition
+    conditions:
+      EventCode: 4103
+      sourcetype: 'Microsoft-Windows-PowerShell/Operational'
+    rule_conditions:
+      - type: logsource
+        product: windows
+        category: ps_module
+
+# Event ID 4104
+  - id: ps_script_tf
+    type: add_condition
+    conditions:
+      EventCode: 4104
+      sourcetype: 'Microsoft-Windows-PowerShell/Operational'
+    rule_conditions:
+      - type: logsource
+        product: windows
+        category: ps_script
+
+postprocessing:
+- type: template
+  template: |+
+    [{{ rule.id }}]
+    search = {{ query }} | eval rule="{{ rule.id }}", title="{{ rule.title }}" | collect index=notable_events addinfo=True source="{{ rule.id }}" 
+    description = {{ rule.description }}
+
+finalizers:
+- type: concat
+  prefix: |
+    [default]
+    dispatch.earliest_time = -30d
+    dispatch.latest_time = now
+    enableSched = 1
+    cron_schedule = */15 * * * *
+    allow_skew = 5m
+    alert.track = 1
