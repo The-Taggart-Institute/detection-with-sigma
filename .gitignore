@@ -4,3 +4,6 @@
 
 # compose files
 compose.yml
+
+# vscode config files
+.vscode
