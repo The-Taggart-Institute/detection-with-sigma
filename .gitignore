@@ -1,6 +1,5 @@
 # Splunk stuff
-/app/sigma-index/*
-/app/local/*
+/app/*
 
 # compose files
 compose.yml
