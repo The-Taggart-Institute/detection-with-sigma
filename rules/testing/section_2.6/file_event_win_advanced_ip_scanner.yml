@@ -26,4 +26,4 @@ detection:
     condition: selection
 falsepositives:
     - Legitimate administrative use
-level: medium
+level: low
