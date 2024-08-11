@@ -375,9 +375,9 @@ transformations:
 postprocessing:
 - type: template
   template: |+
-    [{{ rule.id }}]
-    search = {{ query }} | eval rule="{{ rule.id }}", title="{{ rule.title }}" | collect index=notable_events addinfo=True source="{{ rule.id }}" 
-    description = {{ rule.description }}
+    [{{ rule.title }}]
+    search = {{ query }} | eval rule_id="{{ rule.id }}", title="{{ rule.title }}", severity="{{rule.level}}"  | collect index=notable_events
+    description = "{{ rule.description | replace('\n', ' ') }}"
 
 finalizers:
 - type: concat
@@ -389,3 +389,4 @@ finalizers:
     cron_schedule = */15 * * * *
     allow_skew = 5m
     alert.track = 1
+    

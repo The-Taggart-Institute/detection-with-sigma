@@ -1,5 +1,5 @@
 # Splunk stuff
-/app/*
+app/*
 
 # compose files
 compose.yml
