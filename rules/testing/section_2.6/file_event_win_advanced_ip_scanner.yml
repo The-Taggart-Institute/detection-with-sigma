@@ -27,3 +27,4 @@ detection:
 falsepositives:
     - Legitimate administrative use
 level: low
+
