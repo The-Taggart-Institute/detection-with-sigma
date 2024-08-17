@@ -6,7 +6,7 @@ name: Sigma Rule Tests
 on:
   push:
     branches:
-      - "ChangeMe!"
+      - "*"
     paths:
       - ".github/workflows/sigma-test.yml"
       - "deprecated/**.yml"
@@ -15,7 +15,7 @@ on:
       - "tests/test_rules.py"
   pull_request:
     branches:
-      - "ChangeMe!"
+      - "*"
     paths:
       - ".github/workflows/sigma-test.yml"
       - "deprecated/**.yml"
