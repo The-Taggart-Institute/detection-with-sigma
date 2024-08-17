@@ -13,7 +13,7 @@ tags:
     - attack.t1543.003
 logsource:
     product: windows
-    category: driver_load
+    category: driver-load
 detection:
     selection_name:
         ImageLoaded|endswith:
