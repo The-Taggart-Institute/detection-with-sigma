@@ -18,7 +18,7 @@ tags:
     - attack.discovery
     - attack.t1046
 logsource:
-    category: file-event
+    category: file_event
     product: windows
 detection:
     selection:
