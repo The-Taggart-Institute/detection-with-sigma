@@ -17,7 +17,6 @@ validators:
     - duplicate_title
     - escaped_wildcard
     - filename_lengh
-    - filename_sigmahq
     - identifier_existence
     - identifier_uniqueness
     - level_existence    
