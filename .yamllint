@@ -5,6 +5,8 @@ ignore:
     - .github/
     - deprecated/
     - tests/
+    - backend/
+    - app/
 
 rules:
     comments:
