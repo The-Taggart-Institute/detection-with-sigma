@@ -383,7 +383,7 @@ finalizers:
 - type: concat
   prefix: |
     [default]
-    dispatch.earliest_time = -30d
+    dispatch.earliest_time = -1y
     dispatch.latest_time = now
     enableSched = 1
     cron_schedule = */15 * * * *
