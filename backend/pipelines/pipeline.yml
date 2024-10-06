@@ -376,7 +376,7 @@ postprocessing:
 - type: template
   template: |+
     [{{ rule.title }}]
-    search = {{ query }} | eval rule_id="{{ rule.id }}", title="{{ rule.title }}", severity="{{rule.level}}"  | collect index=notable_events
+    search = {{ query | replace('\n', ' ') }} | eval rule_id="{{ rule.id }}", title="{{ rule.title }}", severity="{{rule.level}}"  | collect index=notable_events
     description = "{{ rule.description | replace('\n', ' ') }}"
 
 finalizers:
