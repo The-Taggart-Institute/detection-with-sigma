@@ -6,3 +6,8 @@ compose.yml
 
 # vscode config files
 .vscode
+
+# cronjob stuff
+cron_logs/*
+*.sh
+
