@@ -1,5 +1,5 @@
-# Detection Engineering With Sigma
-Building a Detection Engineering lab using Splunk, PySigma, and Sigma Rules.
+# Automated Detection With Sigma
+Building an Automated Detection Engineering lab using Splunk, PySigma, and Sigma Rules.
 
 ## Course Overview
 
